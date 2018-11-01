@@ -1,0 +1,27 @@
+﻿@model CandidateScreening.Models.PatientViewModel
+
+<h2>Check out now</h2>
+<p>Please enter your details, and we'll ship your goods right away!</p>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+
+    <h3>Address</h3>
+
+    foreach (var property in ViewData.ModelMetadata.Properties)
+    {
+            <div class="form-group">
+                <label>@(property.DisplayName ?? property.PropertyName)</label>
+                @Html.TextBox(property.PropertyName, null, new { @class = "form-control" })
+            </div>
+      
+    }
+
+
+
+    <div class="text-center">
+        <input class="btn btn-primary" type="submit" value="Create Patient" />
+    </div>
+}
+

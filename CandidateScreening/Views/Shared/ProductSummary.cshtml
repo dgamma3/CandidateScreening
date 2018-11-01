@@ -1,0 +1,38 @@
+﻿@model CandidateScreening.Data.Entities.Patient
+<div class="well" style="overflow:auto">
+
+    <div style="float:left; width:50%">
+        <h3>
+            <strong>@Model.Firstname</strong><span> @Model.Surname</span>
+
+        </h3>      
+        <span class="lead">
+            @if (Model.Gender == "M")
+            {
+                @: Male
+            }
+            else
+            {
+                @: Female
+            }
+
+
+
+        </span>
+        <small class="text-muted">
+            <span>
+                @Model.Email
+            </span>
+            <span> | </span>
+            <span>
+                @Model.DateOfBirth.ToString("dd/MM/yyyy")
+            </span>
+        </small>
+    </div>
+    <div style="float:left; width:50%">
+        <p class="pull-right" style="margin:0 ">
+            <button type="button" class="btn btn-primary" style="transform: translateY(50%); margin:0">@Html.ActionLink("View","PatientInfo",new {id = Model.Id }, new {style = "color: white;    text - decoration: none " } )</button>
+        </p>
+    </div>
+ 
+</div>

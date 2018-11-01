@@ -1,0 +1,55 @@
+﻿@model CandidateScreening.Models.PatientViewModel
+<div class="container well" >
+
+
+    <div class="row">
+        <div class="col-md-12">
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>Patient Info</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <form>
+                        <div class="form-group row">
+                            <label for="name" class="col-4 col-form-label">First Name</label>
+                            <div class="col-8">
+                                <input id="name" name="name" placeholder="@Model.Firstname" class="form-control here" readonly type="text">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="lastname" class="col-4 col-form-label">Last Name</label>
+                            <div class="col-8">
+                                <input id="lastname" name="lastname" placeholder="@Model.Surname" class="form-control here" readonly type="text">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="text" class="col-4 col-form-label">Gender</label>
+                            <div class="col-8">
+                                <input id="text" name="text" placeholder="@Model.Gender" class="form-control here" readonly required="required" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="email" class="col-4 col-form-label">Email</label>
+                            <div class="col-8">
+                                <input id="email" name="email" placeholder="@Model.Email" class="form-control here" readonly required="required" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="website" class="col-4 col-form-label">DateOfBirth</label>
+                            <div class="col-8">
+                                <input id="website" name="website" placeholder="@Model.DateOfBirth" readonly class="form-control here" type="text">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
