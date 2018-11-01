@@ -13,6 +13,7 @@ namespace CandidateScreening.Models
         [Required(ErrorMessage = "Please enter a surname")]
         public string Surname { get; set; }
         [Required(ErrorMessage = "Please enter a date of birth")]
+
         public DateTime DateOfBirth { get; set; }
 
         [Required(ErrorMessage = "Please enter a gender")]
@@ -20,6 +21,8 @@ namespace CandidateScreening.Models
         public string Gender { get; set; } //M or F
 
         [Required(ErrorMessage = "Please enter a email")]
+        [RegularExpression(".+\\@.+\\..+",
+            ErrorMessage = "Please enter a valid email address")]
         public string Email { get; set; }
     }
 }

@@ -3,25 +3,71 @@
 <h2>Check out now</h2>
 <p>Please enter your details, and we'll ship your goods right away!</p>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Add", "Home",FormMethod.Post))
 {
     @Html.ValidationSummary()
 
-    <h3>Address</h3>
+    <h3>Address</h3>  
+    <div class="container well">
 
-    foreach (var property in ViewData.ModelMetadata.Properties)
-    {
-            <div class="form-group">
-                <label>@(property.DisplayName ?? property.PropertyName)</label>
-                @Html.TextBox(property.PropertyName, null, new { @class = "form-control" })
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Patient Info</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                       
+                            <div class="form-group row">
+                                <label for="name" class="col-4 col-form-label">First Name</label>
+                                <div class="col-8">  
+                                    @Html.TextBoxFor(x => x.Firstname, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="lastname" class="col-4 col-form-label">Last Name</label>
+                                <div class="col-8">
+                                    @Html.TextBoxFor(x => x.Surname, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="text" class="col-4 col-form-label">Gender</label>
+                                <div class="col-8">
+                                        @Html.DropDownListFor(x => x.Gender, new[] {
+                                        new SelectListItem() {Text = "Male",
+                                        Value = bool.TrueString},
+                                        new SelectListItem() {Text = "Female",
+                                        Value = bool.FalseString}
+                                        }, "Choose an option", new { @class = "form-control" })
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="email" class="col-4 col-form-label">Email</label>
+                                <div class="col-8">
+                                    @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="website" class="col-4 col-form-label">DateOfBirth</label>
+                                <div class="col-8">
+                                    @Html.TextBoxFor(x => x.DateOfBirth, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        
+                    </div>
+                </div>
             </div>
-      
-    }
-
-
+        </div>
+    </div>
 
     <div class="text-center">
+  
         <input class="btn btn-primary" type="submit" value="Create Patient" />
+          
     </div>
 }
 

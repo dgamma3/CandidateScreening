@@ -22,7 +22,7 @@ namespace CandidateScreening.Controllers
         public ActionResult Add()
         {
           
-            return View();
+            return View(new PatientViewModel());
         }
       
         [HttpPost]
@@ -51,17 +51,21 @@ namespace CandidateScreening.Controllers
             }
         }
 
-        public ViewResult List(int page = 1, string message =null) 
+        public ViewResult List(int page = 1, string message =null, string search = null) 
         {
-            var g = HomeController.context.Patients.ToArray();
+            var Patients = HomeController.context.Patients.ToArray();
+            if(search != null)
+            {
+                Patients = Patients.Where(x => x.Firstname.Contains(search)).ToArray() ;
+            }
             CandidateScreening.Models.ProductListViewModel model = new ProductListViewModel
             {
-                Products = g.OrderBy(p => p.Id).Skip((page - 1) * PageSize).Take(PageSize),
+                Products = Patients.OrderBy(p => p.Id).Skip((page - 1) * PageSize).Take(PageSize),
                 PagingInfo = new PagingInfo
                 {
                     CurrentPage = page,
                     ItemsPerPage = PageSize,
-                    TotalItems = g.Count()
+                    TotalItems = Patients.Count()
                 }
             };
             if(message != null)
